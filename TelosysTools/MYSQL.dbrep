@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+<tableList databaseId="0" databaseName="MYSQL" databaseProductName="MySQL" generation="2015-11-14 21:15:12">
+<table catalog="dev" databaseType="TABLE" javaBean="FavSchool" name="fav_school" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="student_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="school_id" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="schoolId" javaType="java.lang.Integer" jdbcTypeCode="4" label="School id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="affiliate_type" dbNotNull="false" dbPosition="4" dbSize="36" dbTypeName="SET" inputType="text" javaName="affiliateType" javaType="java.lang.String" jdbcTypeCode="1" label="Affiliate type" maxLength="36" notNull="false" selected="true"/>
+<column dbComment="write down what you like about the school: tuition, locaiton, quality..." dbDefaultValue="" dbName="note" dbNotNull="false" dbPosition="5" dbSize="1000" dbTypeName="VARCHAR" inputType="text" javaName="note" javaType="java.lang.String" jdbcTypeCode="12" label="Note" maxLength="1000" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_created_dt" dbNotNull="true" dbPosition="6" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auCreatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au created dt" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_updated_dt" dbNotNull="true" dbPosition="7" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auUpdatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au updated dt" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_created_by" dbNotNull="false" dbPosition="8" dbSize="10" dbTypeName="INT" inputType="number" javaName="auCreatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au created by" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_updated_by" dbNotNull="false" dbPosition="9" dbSize="10" dbTypeName="INT" inputType="number" javaName="auUpdatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au updated by" notNull="false" selected="true"/>
+<fk name="fav_school_fk">
+<fkcol colname="school_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="fav_school" tableref="school" updaterule="3"/>
+</fk>
+<fk name="fav_student_fk">
+<fkcol colname="student_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="fav_school" tableref="student" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fav_school_fk" id="LINK_FK_fav_school_fk_O" inverseSideOf="" javaName="school" javaType="School" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="fav_school" targetEntity="School" targetTableName="school" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="school_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fav_student_fk" id="LINK_FK_fav_student_fk_O" inverseSideOf="" javaName="student" javaType="Student" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="fav_school" targetEntity="Student" targetTableName="student" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="dev" databaseType="TABLE" javaBean="School" name="school" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="200" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="200" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="type" dbNotNull="true" dbPosition="3" dbSize="14" dbTypeName="SET" inputType="text" javaName="type" javaType="java.lang.String" jdbcTypeCode="1" label="Type" maxLength="14" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="Religious affiliation(s)" dbDefaultValue="" dbName="relegious" dbNotNull="false" dbPosition="4" dbSize="14" dbTypeName="SET" inputType="text" javaName="relegious" javaType="java.lang.String" jdbcTypeCode="1" label="Relegious" maxLength="14" notNull="false" selected="true"/>
+<column dateType="D" dbComment="" dbDefaultValue="" dbName="established" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="DATE" inputType="date" javaName="established" javaType="java.util.Date" jdbcTypeCode="91" label="Established" notNull="true" selected="true"/>
+<column dbComment="is the school active?" dbDefaultValue="1" dbName="active" dbNotNull="true" dbPosition="6" dbSize="0" dbTypeName="BIT" inputType="checkbox" javaName="active" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Active" notNull="true" selected="true"/>
+<column dbComment="minimum grade the school is teaching" dbDefaultValue="" dbName="grade_from" dbNotNull="false" dbPosition="7" dbSize="3" dbTypeName="TINYINT" inputType="number" javaName="gradeFrom" javaType="java.lang.Byte" jdbcTypeCode="-6" label="Grade from" notNull="false" selected="true"/>
+<column dbComment="maximum grade the school is teaching" dbDefaultValue="" dbName="grade_to" dbNotNull="false" dbPosition="8" dbSize="3" dbTypeName="TINYINT" inputType="number" javaName="gradeTo" javaType="java.lang.Byte" jdbcTypeCode="-6" label="Grade to" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="website" dbNotNull="false" dbPosition="9" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="website" javaType="java.lang.String" jdbcTypeCode="12" label="Website" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="gender" dbNotNull="false" dbPosition="10" dbSize="14" dbTypeName="SET" inputType="text" javaName="gender" javaType="java.lang.String" jdbcTypeCode="1" label="Gender" maxLength="14" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="crest_url" dbNotNull="false" dbPosition="11" dbSize="200" dbTypeName="VARCHAR" inputType="text" javaName="crestUrl" javaType="java.lang.String" jdbcTypeCode="12" label="Crest url" maxLength="200" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="slogan" dbNotNull="false" dbPosition="12" dbSize="200" dbTypeName="VARCHAR" inputType="text" javaName="slogan" javaType="java.lang.String" jdbcTypeCode="12" label="Slogan" maxLength="200" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="street" dbNotNull="false" dbPosition="13" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="street" javaType="java.lang.String" jdbcTypeCode="12" label="Street" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="https://en.wikipedia.org/wiki/Geographic_coordinate_conversion" dbDefaultValue="" dbName="longitude" dbNotNull="false" dbPosition="14" dbSize="22" dbTypeName="DOUBLE" inputType="number" javaName="longitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Longitude" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="latitude" dbNotNull="false" dbPosition="15" dbSize="22" dbTypeName="DOUBLE" inputType="number" javaName="latitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Latitude" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_created_dt" dbNotNull="true" dbPosition="16" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auCreatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au created dt" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_updated_dt" dbNotNull="true" dbPosition="17" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auUpdatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au updated dt" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="city" dbNotNull="false" dbPosition="18" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="city" javaType="java.lang.String" jdbcTypeCode="12" label="City" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="state" dbNotNull="false" dbPosition="19" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="state" javaType="java.lang.String" jdbcTypeCode="12" label="State" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="countrycode" dbNotNull="false" dbPosition="20" dbSize="2" dbTypeName="VARCHAR" inputType="text" javaName="countrycode" javaType="java.lang.String" jdbcTypeCode="12" label="Countrycode" maxLength="2" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="zip" dbNotNull="false" dbPosition="21" dbSize="10" dbTypeName="VARCHAR" inputType="text" javaName="zip" javaType="java.lang.String" jdbcTypeCode="12" label="Zip" maxLength="10" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fav_school_fk" id="LINK_FK_fav_school_fk_I" inverseSideOf="LINK_FK_fav_school_fk_O" javaName="listOfFavSchool" javaType="java.util.List" joinTableName="" mappedBy="school" optional="UNDEFINED" owningSide="false" sourceTableName="school" targetEntity="FavSchool" targetTableName="fav_school" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="school_detail_fk" id="LINK_FK_school_detail_fk_I" inverseSideOf="LINK_FK_school_detail_fk_O" javaName="listOfSchoolDetail" javaType="java.util.List" joinTableName="" mappedBy="school" optional="UNDEFINED" owningSide="false" sourceTableName="school" targetEntity="SchoolDetail" targetTableName="school_detail" used="true"/>
+</table>
+<table catalog="dev" databaseType="TABLE" javaBean="SchoolDetail" name="school_detail" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="school_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="schoolId" javaType="java.lang.Integer" jdbcTypeCode="4" label="School id" notNull="true" selected="true"/>
+<column dateType="D" dbComment="" dbDefaultValue="" dbName="year" dbNotNull="true" dbPosition="3" dbSize="0" dbTypeName="YEAR" inputType="date" javaName="year" javaType="java.util.Date" jdbcTypeCode="91" label="Year" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_count" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentCount" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student count" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="avg_class_size" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="DECIMAL" inputType="number" javaName="avgClassSize" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Avg class size" notNull="false" selected="true"/>
+<column dbComment="student to teacher ratio" dbDefaultValue="" dbName="ratio" dbNotNull="false" dbPosition="6" dbSize="10" dbTypeName="INT" inputType="number" javaName="ratio" javaType="java.lang.Integer" jdbcTypeCode="4" label="Ratio" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="avg_sat_score" dbNotNull="false" dbPosition="7" dbSize="10" dbTypeName="DECIMAL" inputType="number" javaName="avgSatScore" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Avg sat score" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="avg_act_score" dbNotNull="false" dbPosition="8" dbSize="10" dbTypeName="DECIMAL" inputType="number" javaName="avgActScore" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Avg act score" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="tuition" dbNotNull="false" dbPosition="9" dbSize="10" dbTypeName="DECIMAL" inputType="number" javaName="tuition" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Tuition" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_created_dt" dbNotNull="true" dbPosition="10" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auCreatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au created dt" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_updated_dt" dbNotNull="true" dbPosition="11" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auUpdatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au updated dt" notNull="true" selected="true"/>
+<fk name="school_detail_fk">
+<fkcol colname="school_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="school_detail" tableref="school" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="school_detail_fk" id="LINK_FK_school_detail_fk_O" inverseSideOf="" javaName="school" javaType="School" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="school_detail" targetEntity="School" targetTableName="school" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="school_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="dev" databaseType="TABLE" javaBean="Student" name="student" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name_first" dbNotNull="true" dbPosition="2" dbSize="40" dbTypeName="VARCHAR" inputType="text" javaName="nameFirst" javaType="java.lang.String" jdbcTypeCode="12" label="Name first" maxLength="40" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name_last" dbNotNull="true" dbPosition="3" dbSize="40" dbTypeName="VARCHAR" inputType="text" javaName="nameLast" javaType="java.lang.String" jdbcTypeCode="12" label="Name last" maxLength="40" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name_middle" dbNotNull="false" dbPosition="4" dbSize="40" dbTypeName="VARCHAR" inputType="text" javaName="nameMiddle" javaType="java.lang.String" jdbcTypeCode="12" label="Name middle" maxLength="40" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="email" dbNotNull="true" dbPosition="5" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="email" javaType="java.lang.String" jdbcTypeCode="12" label="Email" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="city" dbNotNull="false" dbPosition="6" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="city" javaType="java.lang.String" jdbcTypeCode="12" label="City" maxLength="100" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="country" dbNotNull="false" dbPosition="7" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="country" javaType="java.lang.String" jdbcTypeCode="12" label="Country" maxLength="100" notNull="false" selected="true"/>
+<column dateType="D" dbComment="" dbDefaultValue="" dbName="born_year" dbNotNull="false" dbPosition="8" dbSize="0" dbTypeName="YEAR" inputType="date" javaName="bornYear" javaType="java.util.Date" jdbcTypeCode="91" label="Born year" notNull="false" selected="true"/>
+<column dateType="D" dbComment="" dbDefaultValue="" dbName="birth_date" dbNotNull="false" dbPosition="9" dbSize="10" dbTypeName="DATE" inputType="date" javaName="birthDate" javaType="java.util.Date" jdbcTypeCode="91" label="Birth date" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_created_dt" dbNotNull="true" dbPosition="10" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auCreatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au created dt" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_updated_dt" dbNotNull="true" dbPosition="11" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auUpdatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au updated dt" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_created_by" dbNotNull="false" dbPosition="12" dbSize="10" dbTypeName="INT" inputType="number" javaName="auCreatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au created by" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_updated_by" dbNotNull="false" dbPosition="13" dbSize="10" dbTypeName="INT" inputType="number" javaName="auUpdatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au updated by" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="login_student_fk" id="LINK_FK_login_student_fk_I" inverseSideOf="LINK_FK_login_student_fk_O" javaName="listOfStudentLogin" javaType="java.util.List" joinTableName="" mappedBy="student" optional="UNDEFINED" owningSide="false" sourceTableName="student" targetEntity="StudentLogin" targetTableName="student_login" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fav_student_fk" id="LINK_FK_fav_student_fk_I" inverseSideOf="LINK_FK_fav_student_fk_O" javaName="listOfFavSchool" javaType="java.util.List" joinTableName="" mappedBy="student" optional="UNDEFINED" owningSide="false" sourceTableName="student" targetEntity="FavSchool" targetTableName="fav_school" used="true"/>
+</table>
+<table catalog="dev" databaseType="TABLE" javaBean="StudentLogin" name="student_login" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="login_name" dbNotNull="false" dbPosition="2" dbSize="40" dbTypeName="VARCHAR" inputType="text" javaName="loginName" javaType="java.lang.String" jdbcTypeCode="12" label="Login name" maxLength="40" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="email" dbNotNull="true" dbPosition="3" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="email" javaType="java.lang.String" jdbcTypeCode="12" label="Email" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="relationship" dbNotNull="false" dbPosition="4" dbSize="19" dbTypeName="SET" inputType="text" javaName="relationship" javaType="java.lang.String" jdbcTypeCode="1" label="Relationship" maxLength="19" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_created_dt" dbNotNull="true" dbPosition="5" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auCreatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au created dt" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="au_updated_dt" dbNotNull="true" dbPosition="6" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="auUpdatedDt" javaType="java.util.Date" jdbcTypeCode="93" label="Au updated dt" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_created_by" dbNotNull="false" dbPosition="7" dbSize="10" dbTypeName="INT" inputType="number" javaName="auCreatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au created by" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="au_updated_by" dbNotNull="false" dbPosition="8" dbSize="10" dbTypeName="INT" inputType="number" javaName="auUpdatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Au updated by" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="student_id" dbNotNull="false" dbPosition="9" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<fk name="login_student_fk">
+<fkcol colname="student_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="student_login" tableref="student" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="login_student_fk" id="LINK_FK_login_student_fk_O" inverseSideOf="" javaName="student" javaType="Student" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="student_login" targetEntity="Student" targetTableName="student" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+</tableList>
+</root>

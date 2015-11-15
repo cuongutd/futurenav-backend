@@ -1,0 +1,22 @@
+Update date : Sat Nov 14 21:14:57 PST 2015
+ 
+ Table 'fav_school' found in repository
+ (=) table 'fav_school' unchanged
+ 
+ Table 'school' found in repository
+ . Column 'address' deleted
+ . Column 'street' added
+ . Column 'city' added
+ . Column 'state' added
+ . Column 'countrycode' added
+ . Column 'zip' added
+ (*) table 'school' updated : 6 change(s)
+ 
+ Table 'school_detail' found in repository
+ (=) table 'school_detail' unchanged
+ 
+ Table 'student' found in repository
+ (=) table 'student' unchanged
+ 
+ Table 'student_login' found in repository
+ (=) table 'student_login' unchanged
