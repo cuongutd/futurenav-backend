@@ -4,12 +4,12 @@ import com.cuong.futurenav.dao.SchoolJpaRepository;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
 import com.cuong.futurenav.model.SchoolData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Cuong on 11/13/2015.
@@ -31,10 +31,24 @@ public class SchoolManager {
 
 	}
 
-	public List<SchoolData> findSchoolByLocation(@RequestParam(value = "lat") String lat, @RequestParam(value = "lon") String lon){
-		
-		return null;
-		
+	public List<SchoolData> findSchoolByLocation(String lat, String lon) {
+
+		double dLat = Double.valueOf(lat);
+		double dLon = Double.valueOf(lon);
+
+		List<SchoolEntity> entities = repo.findByLatitudeLessThanAndLatitudeGreaterThanAndLongitudeLessThanAndLongitudeGreaterThan(dLat - 0.1d, dLat + 0.1d, dLon - 0.1d, dLon + 0.1d);
+
+		List<SchoolData> data = new ArrayList<SchoolData>();
+
+		for (SchoolEntity e : entities) {
+
+			SchoolData d = new SchoolData();
+			BeanUtils.copyProperties(e, d);
+			data.add(d);
+		}
+
+		return data;
+
 	}
-	
+
 }
