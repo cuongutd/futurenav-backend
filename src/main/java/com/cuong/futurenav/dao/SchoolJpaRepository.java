@@ -13,7 +13,7 @@ import com.cuong.futurenav.dao.dto.SchoolEntity;
 @Repository
 public interface SchoolJpaRepository extends PagingAndSortingRepository<SchoolEntity, Integer> {
 
-	List<SchoolEntity> findByLatitudeLessThanAndLatitudeGreaterThanAndLongitudeLessThanAndLongitudeGreaterThan(double lowerLat, double upperLat, double lowerLong, double upperLong);
+	List<SchoolEntity> findByLatitudeGreaterThanAndLatitudeLessThanAndLongitudeGreaterThanAndLongitudeLessThan(double lowerLat, double upperLat, double lowerLong, double upperLong);
 	
 	
 }

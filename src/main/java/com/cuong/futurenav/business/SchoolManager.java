@@ -36,7 +36,7 @@ public class SchoolManager {
 		double dLat = Double.valueOf(lat);
 		double dLon = Double.valueOf(lon);
 
-		List<SchoolEntity> entities = repo.findByLatitudeLessThanAndLatitudeGreaterThanAndLongitudeLessThanAndLongitudeGreaterThan(dLat - 0.1d, dLat + 0.1d, dLon - 0.1d, dLon + 0.1d);
+		List<SchoolEntity> entities = repo.findByLatitudeGreaterThanAndLatitudeLessThanAndLongitudeGreaterThanAndLongitudeLessThan(dLat - 0.1d, dLat + 0.1d, dLon - 0.1d, dLon + 0.1d);
 
 		List<SchoolData> data = new ArrayList<SchoolData>();
 

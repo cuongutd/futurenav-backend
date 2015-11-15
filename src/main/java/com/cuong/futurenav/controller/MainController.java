@@ -26,8 +26,7 @@ public class MainController {
 	
 	@Autowired
 	private StudentManager studentMgr;
-	
-	
+		
 	@RequestMapping(value = "/findSchoolByLocation", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<SchoolResponse> findSchoolByLocation(@RequestParam(value = "lat") String lat, @RequestParam(value = "lon") String lon){

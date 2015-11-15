@@ -27,8 +27,7 @@ import javax.persistence.*;
 @Table(name="school", catalog="dev" )
 // Define named queries here
 @NamedQueries ( {
-  @NamedQuery ( name="SchoolEntity.countAll", query="SELECT COUNT(x) FROM SchoolEntity x" ),
-  @NamedQuery ( name="SchoolEntity.findByLocation", query="SELECT * FROM SchoolEntity latitude > = ? and latitude <= ? and longitude >= ? and longitude <= ?" )
+  @NamedQuery ( name="SchoolEntity.countAll", query="SELECT COUNT(x) FROM SchoolEntity x" )
 } )
 public class SchoolEntity implements Serializable {
 
