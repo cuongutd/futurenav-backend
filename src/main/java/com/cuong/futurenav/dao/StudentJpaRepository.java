@@ -7,5 +7,5 @@ import com.cuong.futurenav.dao.dto.StudentEntity;
  * Repository : Student.
  */
 public interface StudentJpaRepository extends PagingAndSortingRepository<StudentEntity, Integer> {
-	
+	StudentEntity findByEmail(String email);
 }

@@ -56,12 +56,32 @@ public class StudentManager {
 
 	}
 
+	public StudentProfile getStudentProfile(String email) {
+
+		StudentEntity e = studentRepo.findByEmail(email);
+		StudentProfile p = new StudentProfile();
+		BeanUtils.copyProperties(e, p);
+		
+		return p;
+
+	}	
+	
 	public void takeNoteOnFav(int favId, String note) {
 
 		FavSchoolEntity f = favRepo.findOne(favId);
 		f.setNote(note);
 		favRepo.save(f);
 
+	}
+	
+	public StudentProfile createStudentProfile(StudentProfile studentInfo){
+		
+		StudentEntity e = new StudentEntity();
+		BeanUtils.copyProperties(studentInfo, e);
+		studentRepo.save(e);
+		return getStudentProfile(e.getId());
+		
+		
 	}
 
 }

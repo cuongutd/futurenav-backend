@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,9 +77,9 @@ public class MainController {
 	
 	@RequestMapping(value = "/getStudentProfile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile getStudentProfile(@RequestParam(value = "studentId") int studentId){
+	public StudentProfile getStudentProfile(@RequestParam(value = "email") String email){
 		
-		return studentMgr.getStudentProfile(studentId);
+		return studentMgr.getStudentProfile(email);
 		
 	}
 	
@@ -91,5 +92,12 @@ public class MainController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/createStudentProfile", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE
+			, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public StudentProfile createStudentProfile(@RequestBody StudentProfile studentInfo){
+		
+		return studentMgr.createStudentProfile(studentInfo);
+		
+	}
 }
