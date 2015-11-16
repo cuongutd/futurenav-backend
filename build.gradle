@@ -6,9 +6,10 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
 
 war {
-	archiveName 'futurenav.war'
+	archiveName 'FutureNav.war'
 }
 
 repositories {
@@ -25,3 +26,18 @@ dependencies {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+sourceSets {
+    client {
+        java {
+            srcDir 'src/main/java'
+            include 'com/cuong/futurenav/model/*'
+            include 'com/cuong/futurenav/controller/model/*'
+        }
+    }
+}
+
+task client(type: Jar) {
+    from sourceSets.client.output
+    baseName = 'clientBean'
+}
