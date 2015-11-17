@@ -22,10 +22,11 @@ dependencies {
     compile 'org.slf4j:slf4j-log4j12:1.7.13'
     compile 'mysql:mysql-connector-java:5.1.37'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+    compile 'com.google.api-client:google-api-client:1.19.1'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 sourceSets {
     client {

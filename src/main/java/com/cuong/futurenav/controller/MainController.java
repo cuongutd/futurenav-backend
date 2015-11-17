@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import com.cuong.futurenav.business.SchoolManager;
 import com.cuong.futurenav.business.StudentManager;
 import com.cuong.futurenav.controller.model.SchoolResponse;
+import com.cuong.futurenav.controller.model.UserProfileRequest;
 import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.model.StudentProfile;
 
@@ -83,6 +84,15 @@ public class MainController {
 		
 	}
 	
+	@RequestMapping(value = "/tokenSignIn", method = RequestMethod.POST
+			, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public StudentProfile tokenSignIn(@RequestBody UserProfileRequest userProfile){
+		
+		return studentMgr.tokenSignIn(userProfile);
+		
+	}
+	
 	@RequestMapping(value = "/takeNoteOnFav", method = RequestMethod.POST)
 	public void takeNoteOnFav(@RequestParam(value = "studentId") int studentId
 			, @RequestParam(value = "favId") int favId
@@ -92,7 +102,7 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping(value = "/createStudentProfile", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE
+	@RequestMapping(value = "/createStudentProfile", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE
 			, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public StudentProfile createStudentProfile(@RequestBody StudentProfile studentInfo){
@@ -100,4 +110,6 @@ public class MainController {
 		return studentMgr.createStudentProfile(studentInfo);
 		
 	}
+	
+	
 }

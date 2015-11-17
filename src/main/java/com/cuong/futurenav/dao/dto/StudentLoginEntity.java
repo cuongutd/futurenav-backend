@@ -54,11 +54,11 @@ public class StudentLoginEntity implements Serializable {
     private String     relationship ;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="au_created_dt", nullable=false)
+    @Column(name="au_created_dt", nullable=false, updatable=false, insertable=false)
     private Date       auCreatedDt  ;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="au_updated_dt", nullable=false)
+    @Column(name="au_updated_dt", nullable=false, updatable=false, insertable=false)
     private Date       auUpdatedDt  ;
 
     @Column(name="au_created_by")

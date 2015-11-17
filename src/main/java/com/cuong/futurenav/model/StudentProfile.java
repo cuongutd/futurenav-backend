@@ -1,6 +1,5 @@
 package com.cuong.futurenav.model;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +18,8 @@ public class StudentProfile {
 	private Date auUpdatedDt;
 	private Integer auCreatedBy;
 	private Integer auUpdatedBy;
+	private String networkUserId;
+	private String networkGroup;
 	private List<FavSchoolData> listOfFavSchool;
 
 	public void setId(Integer id) {
@@ -131,6 +132,22 @@ public class StudentProfile {
 
 	public List<FavSchoolData> getListOfFavSchool() {
 		return this.listOfFavSchool;
+	}
+
+	public String getNetworkUserId() {
+		return networkUserId;
+	}
+
+	public void setNetworkUserId(String networkuserid) {
+		this.networkUserId = networkuserid;
+	}
+
+	public String getNetworkGroup() {
+		return networkGroup;
+	}
+
+	public void setNetworkGroup(String networkgroup) {
+		this.networkGroup = networkgroup;
 	}
 
 	public String toString() {

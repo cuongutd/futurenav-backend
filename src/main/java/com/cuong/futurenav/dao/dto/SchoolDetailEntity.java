@@ -68,11 +68,11 @@ public class SchoolDetailEntity implements Serializable {
     private BigDecimal tuition      ;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="au_created_dt", nullable=false)
+    @Column(name="au_created_dt", nullable=false, updatable=false, insertable=false)
     private Date       auCreatedDt  ;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="au_updated_dt", nullable=false)
+    @Column(name="au_updated_dt", nullable=false, updatable=false, insertable=false)
     private Date       auUpdatedDt  ;
 
 	// "schoolId" (column "school_id") is not defined by itself because used as FK in a link 
