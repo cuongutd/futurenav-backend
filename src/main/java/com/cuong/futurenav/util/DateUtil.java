@@ -20,13 +20,13 @@ public class DateUtil {
 		if (date != null)
 			return ISO_DATE_FORMAT.format(date);
 		else
-			return "";
+			return null;
 	}
 
 	public static final String formatTimestampAsString(Date date){
 		if (date != null)
 			return ISO_DATETIME_FORMAT.format(date);
-		else return "";
+		else return null;
 	}
     public static final Date formatStringToTimestamp(String sTimeStamp) throws Exception{
     	return ISO_DATETIME_FORMAT.parse(sTimeStamp);
