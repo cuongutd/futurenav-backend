@@ -3,7 +3,7 @@ package com.cuong.futurenav.model;
 import java.util.Date;
 import java.util.List;
 
-public class StudentProfile {
+public class StudentProfileData {
 
 	private Integer id;
 	private String nameFirst;
@@ -20,6 +20,7 @@ public class StudentProfile {
 	private Integer auUpdatedBy;
 	private String networkUserId;
 	private String networkGroup;
+	private String photoUrl;
 	private List<FavSchoolData> listOfFavSchool;
 
 	public void setId(Integer id) {
@@ -151,34 +152,48 @@ public class StudentProfile {
 	}
 
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		sb.append(id);
-		sb.append("]:");
-		sb.append(nameFirst);
-		sb.append("|");
-		sb.append(nameLast);
-		sb.append("|");
-		sb.append(nameMiddle);
-		sb.append("|");
-		sb.append(email);
-		sb.append("|");
-		sb.append(city);
-		sb.append("|");
-		sb.append(country);
-		sb.append("|");
-		sb.append(bornYear);
-		sb.append("|");
-		sb.append(birthDate);
-		sb.append("|");
-		sb.append(auCreatedDt);
-		sb.append("|");
-		sb.append(auUpdatedDt);
-		sb.append("|");
-		sb.append(auCreatedBy);
-		sb.append("|");
-		sb.append(auUpdatedBy);
+        StringBuffer sb = new StringBuffer(); 
+        sb.append("["); 
+        sb.append(id);
+        sb.append("]:"); 
+        sb.append(nameFirst);
+        sb.append("|");
+        sb.append(nameLast);
+        sb.append("|");
+        sb.append(nameMiddle);
+        sb.append("|");
+        sb.append(email);
+        sb.append("|");
+        sb.append(city);
+        sb.append("|");
+        sb.append(country);
+        sb.append("|");
+        sb.append(bornYear);
+        sb.append("|");
+        sb.append(birthDate);
+        sb.append("|");
+        sb.append(auCreatedDt);
+        sb.append("|");
+        sb.append(auUpdatedDt);
+        sb.append("|");
+        sb.append(auCreatedBy);
+        sb.append("|");
+        sb.append(auUpdatedBy);
+        sb.append("|");
+        sb.append(networkUserId);
+        sb.append("|");
+        sb.append(networkGroup);
+        sb.append("|");
+        sb.append(photoUrl);
 		return sb.toString();
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 }

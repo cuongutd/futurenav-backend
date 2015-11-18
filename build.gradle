@@ -24,21 +24,3 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
     compile 'com.google.api-client:google-api-client:1.19.1'
 }
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-sourceSets {
-    client {
-        java {
-            srcDir 'src/main/java'
-            include 'com/cuong/futurenav/model/*'
-            include 'com/cuong/futurenav/controller/model/*'
-        }
-    }
-}
-
-task client(type: Jar) {
-    from sourceSets.client.output
-    baseName = 'clientBean'
-}

@@ -14,9 +14,10 @@ import org.springframework.http.MediaType;
 import com.cuong.futurenav.business.SchoolManager;
 import com.cuong.futurenav.business.StudentManager;
 import com.cuong.futurenav.controller.model.SchoolResponse;
-import com.cuong.futurenav.controller.model.UserProfileRequest;
+import com.cuong.futurenav.controller.model.StudentProfileRequest;
+import com.cuong.futurenav.controller.model.StudentProfileResponse;
 import com.cuong.futurenav.model.SchoolData;
-import com.cuong.futurenav.model.StudentProfile;
+import com.cuong.futurenav.model.StudentProfileData;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -51,46 +52,59 @@ public class MainController {
 	
 	@RequestMapping(value = "/getSchoolDetail", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public SchoolData getSchoolDetail(@RequestParam(value = "schoolId") int schoolId){
+	public SchoolResponse getSchoolDetail(@RequestParam(value = "schoolId") int schoolId){
 		
-		return schoolManager.findSchoolsByLocation(schoolId);
+		SchoolData d = schoolManager.findSchoolsByLocation(schoolId);
+		SchoolResponse r = new SchoolResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 		
 	}
 	
 	@RequestMapping(value = "/addSchoolToFav", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile addSchoolToFav(@RequestParam(value = "studentId") int studentId
+	public StudentProfileResponse addSchoolToFav(@RequestParam(value = "studentId") int studentId
 			, @RequestParam(value = "schoolId") int schoolId
 			, @RequestParam(value = "note") String note){
 		
-		return studentMgr.addSchoolToFav(studentId, schoolId, note);
+		StudentProfileData d = studentMgr.addSchoolToFav(studentId, schoolId, note);
+		StudentProfileResponse r = new StudentProfileResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 		
 	}
 	
 	@RequestMapping(value = "/removeFromFav", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile removeFromFav(@RequestParam(value = "studentId") int studentId
+	public StudentProfileResponse removeFromFav(@RequestParam(value = "studentId") int studentId
 			, @RequestParam(value = "favId") int favId){
 		
-		return studentMgr.removeFromFav(studentId, favId);
+		StudentProfileData d = studentMgr.removeFromFav(studentId, favId);
+		StudentProfileResponse r = new StudentProfileResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 		
 	}
 	
 	@RequestMapping(value = "/getStudentProfile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile getStudentProfile(@RequestParam(value = "email") String email){
+	public StudentProfileResponse getStudentProfile(@RequestParam(value = "email") String email){
 		
-		return studentMgr.getStudentProfile(email);
-		
+		StudentProfileData d = studentMgr.getStudentProfile(email);
+		StudentProfileResponse r = new StudentProfileResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 	}
 	
 	@RequestMapping(value = "/tokenSignIn", method = RequestMethod.POST
 			, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile tokenSignIn(@RequestBody UserProfileRequest userProfile){
+	public StudentProfileResponse tokenSignIn(@RequestBody StudentProfileRequest userProfile){
 		
-		return studentMgr.tokenSignIn(userProfile);
-		
+		StudentProfileData d = studentMgr.tokenSignIn(userProfile);
+		StudentProfileResponse r = new StudentProfileResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 	}
 	
 	@RequestMapping(value = "/takeNoteOnFav", method = RequestMethod.POST)
@@ -105,10 +119,12 @@ public class MainController {
 	@RequestMapping(value = "/createStudentProfile", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE
 			, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public StudentProfile createStudentProfile(@RequestBody StudentProfile studentInfo){
+	public StudentProfileResponse createStudentProfile(@RequestBody StudentProfileData studentInfo){
 		
-		return studentMgr.createStudentProfile(studentInfo);
-		
+		StudentProfileData d = studentMgr.createStudentProfile(studentInfo);
+		StudentProfileResponse r = new StudentProfileResponse();
+		BeanUtils.copyProperties(d, r);
+		return r;
 	}
 	
 	

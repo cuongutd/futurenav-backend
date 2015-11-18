@@ -1,6 +1,6 @@
 package com.cuong.futurenav.controller.model;
 
-public class UserProfileRequest {
+public class StudentProfileRequest {
 	private String displayName;
 	private String email;
 	private String photoUrl;

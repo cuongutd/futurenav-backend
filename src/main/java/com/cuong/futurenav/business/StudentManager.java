@@ -8,14 +8,14 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cuong.futurenav.controller.model.UserProfileRequest;
+import com.cuong.futurenav.controller.model.StudentProfileRequest;
 import com.cuong.futurenav.dao.FavSchoolJpaRepository;
 import com.cuong.futurenav.dao.SchoolJpaRepository;
 import com.cuong.futurenav.dao.StudentJpaRepository;
 import com.cuong.futurenav.dao.dto.FavSchoolEntity;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
 import com.cuong.futurenav.dao.dto.StudentEntity;
-import com.cuong.futurenav.model.StudentProfile;
+import com.cuong.futurenav.model.StudentProfileData;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -40,7 +40,7 @@ public class StudentManager {
 	@Autowired
 	SchoolJpaRepository schoolRepo;
 
-	public StudentProfile addSchoolToFav(int studentId, int schoolId, String note) {
+	public StudentProfileData addSchoolToFav(int studentId, int schoolId, String note) {
 
 		SchoolEntity e = schoolRepo.findOne(schoolId);
 		StudentEntity s = studentRepo.findOne(studentId);
@@ -55,27 +55,27 @@ public class StudentManager {
 
 	}
 
-	public StudentProfile removeFromFav(int studentId, int favId) {
+	public StudentProfileData removeFromFav(int studentId, int favId) {
 
 		favRepo.delete(favId);
 
 		return getStudentProfile(studentId);
 	}
 
-	public StudentProfile getStudentProfile(int studentId) {
+	public StudentProfileData getStudentProfile(int studentId) {
 
 		StudentEntity e = studentRepo.findOne(studentId);
-		StudentProfile p = new StudentProfile();
+		StudentProfileData p = new StudentProfileData();
 		BeanUtils.copyProperties(e, p);
 
 		return p;
 
 	}
 
-	public StudentProfile getStudentProfile(String email) {
+	public StudentProfileData getStudentProfile(String email) {
 
 		StudentEntity e = studentRepo.findByEmail(email);
-		StudentProfile p = new StudentProfile();
+		StudentProfileData p = new StudentProfileData();
 		BeanUtils.copyProperties(e, p);
 
 		return p;
@@ -90,7 +90,7 @@ public class StudentManager {
 
 	}
 
-	public StudentProfile createStudentProfile(StudentProfile studentInfo) {
+	public StudentProfileData createStudentProfile(StudentProfileData studentInfo) {
 
 		StudentEntity e = new StudentEntity();
 		BeanUtils.copyProperties(studentInfo, e);
@@ -99,7 +99,7 @@ public class StudentManager {
 
 	}
 
-	public StudentProfile tokenSignIn(UserProfileRequest userProfile) {
+	public StudentProfileData tokenSignIn(StudentProfileRequest userProfile) {
 
 		// verify the token through google
 		String userId = verifyGoogleToken(userProfile.getAuthToken());
@@ -116,6 +116,7 @@ public class StudentManager {
 			e.setEmail(userProfile.getEmail());
 			e.setNetworkGroup(userProfile.getNetworkGroup());
 			e.setNetworkUserId(userId);
+			e.setPhotoUrl(userProfile.getPhotoUrl());
 			studentRepo.save(e);
 		}
 		return getStudentProfile(e.getId());
