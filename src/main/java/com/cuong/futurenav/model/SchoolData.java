@@ -31,8 +31,9 @@ public class SchoolData {
 	private Date auCreatedDt;
 	private Date auUpdatedDt;
 	private List<SchoolDetailData> listOfSchoolDetail;
-	
-	
+	private String contactNumber;
+	private String email;
+
 	public SchoolData() {
 	}
 
@@ -245,5 +246,21 @@ public class SchoolData {
 
 	public void setListOfSchoolDetail(List<SchoolDetailData> listOfSchoolDetail) {
 		this.listOfSchoolDetail = listOfSchoolDetail;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
