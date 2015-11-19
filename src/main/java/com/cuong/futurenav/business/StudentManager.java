@@ -2,12 +2,15 @@ package com.cuong.futurenav.business;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cuong.futurenav.controller.model.FavSchoolResponse;
+import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileRequest;
 import com.cuong.futurenav.dao.FavSchoolJpaRepository;
 import com.cuong.futurenav.dao.SchoolJpaRepository;
@@ -15,7 +18,10 @@ import com.cuong.futurenav.dao.StudentJpaRepository;
 import com.cuong.futurenav.dao.dto.FavSchoolEntity;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
 import com.cuong.futurenav.dao.dto.StudentEntity;
+import com.cuong.futurenav.model.FavSchoolData;
+import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.model.StudentProfileData;
+import com.cuong.futurenav.util.BeanCopy;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -66,7 +72,7 @@ public class StudentManager {
 
 		StudentEntity e = studentRepo.findOne(studentId);
 		StudentProfileData p = new StudentProfileData();
-		BeanUtils.copyProperties(e, p);
+		BeanCopy.copyProperties(e, p);
 
 		return p;
 
@@ -76,7 +82,7 @@ public class StudentManager {
 
 		StudentEntity e = studentRepo.findByEmail(email);
 		StudentProfileData p = new StudentProfileData();
-		BeanUtils.copyProperties(e, p);
+		BeanCopy.copyProperties(e, p);
 
 		return p;
 

@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.MediaType;
 import com.cuong.futurenav.business.SchoolManager;
 import com.cuong.futurenav.business.StudentManager;
+import com.cuong.futurenav.controller.model.FavSchoolResponse;
 import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileRequest;
 import com.cuong.futurenav.controller.model.StudentProfileResponse;
+import com.cuong.futurenav.dao.dto.FavSchoolEntity;
+import com.cuong.futurenav.model.FavSchoolData;
 import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.model.StudentProfileData;
+import com.cuong.futurenav.util.BeanCopy;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,7 +58,7 @@ public class MainController {
 	@ResponseBody
 	public SchoolResponse getSchoolDetail(@RequestParam(value = "schoolId") int schoolId){
 		
-		SchoolData d = schoolManager.findSchoolsByLocation(schoolId);
+		SchoolData d = schoolManager.getSchoolDetail(schoolId);
 		SchoolResponse r = new SchoolResponse();
 		BeanUtils.copyProperties(d, r);
 		return r;
@@ -69,7 +73,9 @@ public class MainController {
 		
 		StudentProfileData d = studentMgr.addSchoolToFav(studentId, schoolId, note);
 		StudentProfileResponse r = new StudentProfileResponse();
-		BeanUtils.copyProperties(d, r);
+		
+		BeanCopy.copyProperties(d, r);
+
 		return r;
 		
 	}
@@ -81,7 +87,7 @@ public class MainController {
 		
 		StudentProfileData d = studentMgr.removeFromFav(studentId, favId);
 		StudentProfileResponse r = new StudentProfileResponse();
-		BeanUtils.copyProperties(d, r);
+		BeanCopy.copyProperties(d, r);
 		return r;
 		
 	}
@@ -92,7 +98,7 @@ public class MainController {
 		
 		StudentProfileData d = studentMgr.getStudentProfile(email);
 		StudentProfileResponse r = new StudentProfileResponse();
-		BeanUtils.copyProperties(d, r);
+		BeanCopy.copyProperties(d, r);
 		return r;
 	}
 	
@@ -103,7 +109,7 @@ public class MainController {
 		
 		StudentProfileData d = studentMgr.tokenSignIn(userProfile);
 		StudentProfileResponse r = new StudentProfileResponse();
-		BeanUtils.copyProperties(d, r);
+		BeanCopy.copyProperties(d, r);
 		return r;
 	}
 	
@@ -123,7 +129,7 @@ public class MainController {
 		
 		StudentProfileData d = studentMgr.createStudentProfile(studentInfo);
 		StudentProfileResponse r = new StudentProfileResponse();
-		BeanUtils.copyProperties(d, r);
+		BeanCopy.copyProperties(d, r);
 		return r;
 	}
 	

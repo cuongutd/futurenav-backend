@@ -108,15 +108,7 @@ public class SchoolEntity implements Serializable {
     @Column(name="zip", length=10)
     private String     zip          ;
 
-
-
-    //----------------------------------------------------------------------
-    // ENTITY LINKS ( RELATIONSHIP )
-    //----------------------------------------------------------------------
-    @OneToMany(mappedBy="school", targetEntity=FavSchoolEntity.class)
-    private List<FavSchoolEntity> listOfFavSchool;
-
-    @OneToMany(mappedBy="school", targetEntity=SchoolDetailEntity.class)
+    @OneToMany(mappedBy="school", targetEntity=SchoolDetailEntity.class, fetch = FetchType.EAGER)
     private List<SchoolDetailEntity> listOfSchoolDetail;
 
 
@@ -304,12 +296,6 @@ public class SchoolEntity implements Serializable {
     //----------------------------------------------------------------------
     // GETTERS & SETTERS FOR LINKS
     //----------------------------------------------------------------------
-    public void setListOfFavSchool( List<FavSchoolEntity> listOfFavSchool ) {
-        this.listOfFavSchool = listOfFavSchool;
-    }
-    public List<FavSchoolEntity> getListOfFavSchool() {
-        return this.listOfFavSchool;
-    }
 
     public void setListOfSchoolDetail( List<SchoolDetailEntity> listOfSchoolDetail ) {
         this.listOfSchoolDetail = listOfSchoolDetail;

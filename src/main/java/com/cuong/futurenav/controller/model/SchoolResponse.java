@@ -1,5 +1,7 @@
 package com.cuong.futurenav.controller.model;
 
+import java.util.List;
+
 public class SchoolResponse {
 	private Integer id;
 	private String name;
@@ -10,6 +12,11 @@ public class SchoolResponse {
 	private String gender;
 	private String city;
 	private String state;
+	private Double longitude;
+	private Double latitude;
+	private List<SchoolDetailResponse> listOfSchoolDetail;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -63,6 +70,24 @@ public class SchoolResponse {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public Double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+	public Double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+	public List<SchoolDetailResponse> getListOfSchoolDetail() {
+		return listOfSchoolDetail;
+	}
+	public void setListOfSchoolDetail(List<SchoolDetailResponse> listOfSchoolDetail) {
+		this.listOfSchoolDetail = listOfSchoolDetail;
 	}
 	
 	

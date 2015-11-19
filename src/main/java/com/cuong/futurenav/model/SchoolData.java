@@ -1,6 +1,7 @@
 package com.cuong.futurenav.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Cuong on 11/13/2015.
@@ -29,7 +30,9 @@ public class SchoolData {
 	private Double latitude;
 	private Date auCreatedDt;
 	private Date auUpdatedDt;
-
+	private List<SchoolDetailData> listOfSchoolDetail;
+	
+	
 	public SchoolData() {
 	}
 
@@ -234,5 +237,13 @@ public class SchoolData {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public List<SchoolDetailData> getListOfSchoolDetail() {
+		return listOfSchoolDetail;
+	}
+
+	public void setListOfSchoolDetail(List<SchoolDetailData> listOfSchoolDetail) {
+		this.listOfSchoolDetail = listOfSchoolDetail;
 	}
 }

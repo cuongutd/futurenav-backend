@@ -3,6 +3,7 @@ package com.cuong.futurenav.business;
 import com.cuong.futurenav.dao.SchoolJpaRepository;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
 import com.cuong.futurenav.model.SchoolData;
+import com.cuong.futurenav.util.BeanCopy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,12 @@ public class SchoolManager {
 	@Autowired
 	private SchoolJpaRepository repo;
 
-	public SchoolData findSchoolsByLocation(int id) {
+	public SchoolData getSchoolDetail(int id) {
 
 		SchoolEntity dto = repo.findOne(id);
 
 		SchoolData data = new SchoolData();
-		BeanUtils.copyProperties(dto, data);
+		BeanCopy.copyProperties(dto, data);
 		return data;
 
 	}
