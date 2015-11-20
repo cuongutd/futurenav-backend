@@ -3,28 +3,30 @@ package com.cuong.futurenav.controller.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.cuong.futurenav.util.DateUtil;
+
 public class SchoolDetailResponse {
 	private Integer id;
-	private Date year;
+	private String year;
 	private Integer studentCount;
 	private BigDecimal avgClassSize;
 	private Integer ratio;
 	private BigDecimal avgSatScore;
 	private BigDecimal avgActScore;
 	private BigDecimal tuition;
-	private Date auCreatedDt;
-	private Date auUpdatedDt;
+	private String auCreatedDt;
+	private String auUpdatedDt;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getYear() {
+	public String getYear() {
 		return year;
 	}
 	public void setYear(Date year) {
-		this.year = year;
+		this.year = DateUtil.formatTimestampAsString(year);
 	}
 	public Integer getStudentCount() {
 		return studentCount;
@@ -62,16 +64,16 @@ public class SchoolDetailResponse {
 	public void setTuition(BigDecimal tuition) {
 		this.tuition = tuition;
 	}
-	public Date getAuCreatedDt() {
+	public String getAuCreatedDt() {
 		return auCreatedDt;
 	}
 	public void setAuCreatedDt(Date auCreatedDt) {
-		this.auCreatedDt = auCreatedDt;
+		this.auCreatedDt = DateUtil.formatTimestampAsString(auCreatedDt);
 	}
-	public Date getAuUpdatedDt() {
+	public String getAuUpdatedDt() {
 		return auUpdatedDt;
 	}
 	public void setAuUpdatedDt(Date auUpdatedDt) {
-		this.auUpdatedDt = auUpdatedDt;
+		this.auUpdatedDt = DateUtil.formatTimestampAsString(auUpdatedDt);
 	}
 }

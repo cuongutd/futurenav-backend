@@ -46,6 +46,7 @@ public class MainController {
 		for (SchoolData d :  data){
 			SchoolResponse s = new SchoolResponse();
 			BeanUtils.copyProperties(d,  s);
+			s.setListOfSchoolDetail(null);
 			response.add(s);
 			
 		}
