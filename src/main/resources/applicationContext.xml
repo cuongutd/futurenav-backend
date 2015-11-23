@@ -32,9 +32,9 @@
 		<property name="idleTimeout" value="1800000" />
 		<property name="dataSourceProperties">
 			<props>
-				<prop key="url">#{systemEnvironment['jdbc.url']}</prop>
-				<prop key="user">#{systemEnvironment['jdbc.user']}</prop>
-				<prop key="password">#{systemEnvironment['jdbc.password']}</prop>
+				<prop key="url">#{systemProperties['jdbc.url']}</prop>
+				<prop key="user">#{systemProperties['jdbc.user']}</prop>
+				<prop key="password">#{systemProperties['jdbc.password']}</prop>
 				<prop key="prepStmtCacheSize">250</prop>
 				<prop key="prepStmtCacheSqlLimit">2048</prop>
 				<prop key="cachePrepStmts">true</prop>
