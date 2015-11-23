@@ -5,11 +5,6 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.2.7.RELEASE/9b88497fe93ca81303353023e863e305832d04ff/spring-boot-starter-data-jpa-1.2.7.RELEASE.jar" sourcepath="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/1.2.7.RELEASE/d438d326444b4371864a6fd646daa95d57da0983/spring-boot-starter-data-jpa-1.2.7.RELEASE-sources.jar">
 		<attributes>
@@ -37,6 +32,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/1.19.1/b09ccfa9ac71b52b60ba4c1ab630150685d58c32/google-api-client-1.19.1.jar" sourcepath="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/1.19.1/1cbf4b7ebe14b55f7927ecd0342275792d1222be/google-api-client-1.19.1-sources.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.4.2/cdb4c43ccc5cb31e8cf0876255c8861669d817bb/HikariCP-2.4.2.jar" sourcepath="C:/Users/Cuong/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.4.2/19c193369f47a3a1c8608ba34d983afd6b7572e6/HikariCP-2.4.2-sources.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -311,5 +311,6 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/apache-tomcat-8.0.28/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

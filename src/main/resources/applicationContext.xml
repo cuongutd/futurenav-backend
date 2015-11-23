@@ -1,26 +1,52 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
               http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-  <context:component-scan base-package="com.cuong.futurenav" />
-  
+	<context:component-scan base-package="com.cuong.futurenav" />
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-	    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	 <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-	    <property name="persistenceUnitName" value="futurenav"/>
-	</bean>  
-  
-<jpa:repositories
-    base-package="com.cuong.futurenav.dao"
-    factory-class="org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean"
-    transaction-manager-ref="transactionManager"
-    entity-manager-factory-ref="entityManagerFactory" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<property name="dataSourceClassName"
+			value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+		<property name="maximumPoolSize" value="5" />
+		<property name="maxLifetime" value="1800000" />
+		<property name="idleTimeout" value="1800000" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="url">#{systemEnvironment['jdbc.url']}</prop>
+				<prop key="user">#{systemEnvironment['jdbc.user']}</prop>
+				<prop key="password">#{systemEnvironment['jdbc.password']}</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="useServerPrepStmts">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<jpa:repositories base-package="com.cuong.futurenav.dao"
+		factory-class="org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean"
+		transaction-manager-ref="transactionManager"
+		entity-manager-factory-ref="entityManagerFactory" />
 
 
 </beans>
