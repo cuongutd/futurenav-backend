@@ -3,12 +3,15 @@ package com.cuong.futurenav.model;
 import java.util.Date;
 import java.util.List;
 
+import com.cuong.futurenav.model.FavSchoolData;
+
 public class StudentProfileData {
 
 	private Integer id;
 	private String nameFirst;
 	private String nameLast;
 	private String nameMiddle;
+	private String nameDisplay;
 	private String email;
 	private String city;
 	private String country;
@@ -18,9 +21,10 @@ public class StudentProfileData {
 	private Date auUpdatedDt;
 	private Integer auCreatedBy;
 	private Integer auUpdatedBy;
-	private String networkUserId;
-	private String networkGroup;
+	private String networkuserid;
+	private String networkgroup;
 	private String photoUrl;
+
 	private List<FavSchoolData> listOfFavSchool;
 
 	public void setId(Integer id) {
@@ -53,6 +57,14 @@ public class StudentProfileData {
 
 	public String getNameMiddle() {
 		return this.nameMiddle;
+	}
+
+	public void setNameDisplay(String nameDisplay) {
+		this.nameDisplay = nameDisplay;
+	}
+
+	public String getNameDisplay() {
+		return this.nameDisplay;
 	}
 
 	public void setEmail(String email) {
@@ -127,6 +139,30 @@ public class StudentProfileData {
 		return this.auUpdatedBy;
 	}
 
+	public void setNetworkuserid(String networkuserid) {
+		this.networkuserid = networkuserid;
+	}
+
+	public String getNetworkuserid() {
+		return this.networkuserid;
+	}
+
+	public void setNetworkgroup(String networkgroup) {
+		this.networkgroup = networkgroup;
+	}
+
+	public String getNetworkgroup() {
+		return this.networkgroup;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public String getPhotoUrl() {
+		return this.photoUrl;
+	}
+
 	public void setListOfFavSchool(List<FavSchoolData> listOfFavSchool) {
 		this.listOfFavSchool = listOfFavSchool;
 	}
@@ -135,65 +171,42 @@ public class StudentProfileData {
 		return this.listOfFavSchool;
 	}
 
-	public String getNetworkUserId() {
-		return networkUserId;
-	}
-
-	public void setNetworkUserId(String networkuserid) {
-		this.networkUserId = networkuserid;
-	}
-
-	public String getNetworkGroup() {
-		return networkGroup;
-	}
-
-	public void setNetworkGroup(String networkgroup) {
-		this.networkGroup = networkgroup;
-	}
-
 	public String toString() {
-        StringBuffer sb = new StringBuffer(); 
-        sb.append("["); 
-        sb.append(id);
-        sb.append("]:"); 
-        sb.append(nameFirst);
-        sb.append("|");
-        sb.append(nameLast);
-        sb.append("|");
-        sb.append(nameMiddle);
-        sb.append("|");
-        sb.append(email);
-        sb.append("|");
-        sb.append(city);
-        sb.append("|");
-        sb.append(country);
-        sb.append("|");
-        sb.append(bornYear);
-        sb.append("|");
-        sb.append(birthDate);
-        sb.append("|");
-        sb.append(auCreatedDt);
-        sb.append("|");
-        sb.append(auUpdatedDt);
-        sb.append("|");
-        sb.append(auCreatedBy);
-        sb.append("|");
-        sb.append(auUpdatedBy);
-        sb.append("|");
-        sb.append(networkUserId);
-        sb.append("|");
-        sb.append(networkGroup);
-        sb.append("|");
-        sb.append(photoUrl);
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		sb.append(id);
+		sb.append("]:");
+		sb.append(nameFirst);
+		sb.append("|");
+		sb.append(nameLast);
+		sb.append("|");
+		sb.append(nameMiddle);
+		sb.append("|");
+		sb.append(nameDisplay);
+		sb.append("|");
+		sb.append(email);
+		sb.append("|");
+		sb.append(city);
+		sb.append("|");
+		sb.append(country);
+		sb.append("|");
+		sb.append(bornYear);
+		sb.append("|");
+		sb.append(birthDate);
+		sb.append("|");
+		sb.append(auCreatedDt);
+		sb.append("|");
+		sb.append(auUpdatedDt);
+		sb.append("|");
+		sb.append(auCreatedBy);
+		sb.append("|");
+		sb.append(auUpdatedBy);
+		sb.append("|");
+		sb.append(networkuserid);
+		sb.append("|");
+		sb.append(networkgroup);
+		sb.append("|");
+		sb.append(photoUrl);
 		return sb.toString();
 	}
-
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
-
 }

@@ -2,15 +2,12 @@ package com.cuong.futurenav.business;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cuong.futurenav.controller.model.FavSchoolResponse;
-import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileRequest;
 import com.cuong.futurenav.dao.FavSchoolJpaRepository;
 import com.cuong.futurenav.dao.SchoolJpaRepository;
@@ -18,8 +15,6 @@ import com.cuong.futurenav.dao.StudentJpaRepository;
 import com.cuong.futurenav.dao.dto.FavSchoolEntity;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
 import com.cuong.futurenav.dao.dto.StudentEntity;
-import com.cuong.futurenav.model.FavSchoolData;
-import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.model.StudentProfileData;
 import com.cuong.futurenav.util.BeanCopy;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
@@ -114,14 +109,14 @@ public class StudentManager {
 			return null;
 
 		// check if account exists then return profile
-		StudentEntity e = studentRepo.findByNetworkUserIdAndNetworkGroup(userId, userProfile.getNetworkGroup());
+		StudentEntity e = studentRepo.findByNetworkuseridAndNetworkgroup(userId, userProfile.getNetworkGroup());
 		// if not create new one
 		if (e == null || e.getId() == null) {
 			e = new StudentEntity();
-			e.setNameFirst(userProfile.getDisplayName());
+			e.setNameDisplay(userProfile.getDisplayName());
 			e.setEmail(userProfile.getEmail());
-			e.setNetworkGroup(userProfile.getNetworkGroup());
-			e.setNetworkUserId(userId);
+			e.setNetworkgroup(userProfile.getNetworkGroup());
+			e.setNetworkuserid(userId);
 			e.setPhotoUrl(userProfile.getPhotoUrl());
 			studentRepo.save(e);
 		}

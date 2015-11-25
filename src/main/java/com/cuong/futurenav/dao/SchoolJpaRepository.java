@@ -1,19 +1,14 @@
 package com.cuong.futurenav.dao;
 
-import java.util.List;
-
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
-
 import com.cuong.futurenav.dao.dto.SchoolEntity;
+
+import java.util.List;
 
 /**
  * Repository : School.
  */
-@Repository
 public interface SchoolJpaRepository extends PagingAndSortingRepository<SchoolEntity, Integer> {
-
 	List<SchoolEntity> findByLatitudeGreaterThanAndLatitudeLessThanAndLongitudeGreaterThanAndLongitudeLessThan(double lowerLat, double upperLat, double lowerLong, double upperLong);
-	
-	
+	List<SchoolEntity> findByLatitudeIsNullOrLongitudeIsNull();
 }

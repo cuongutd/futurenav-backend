@@ -2,18 +2,16 @@ package com.cuong.futurenav.util;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.BeanUtils;
-
 import com.cuong.futurenav.controller.model.FavSchoolResponse;
 import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileResponse;
 import com.cuong.futurenav.dao.dto.FavSchoolEntity;
-import com.cuong.futurenav.dao.dto.SchoolDetailEntity;
 import com.cuong.futurenav.dao.dto.SchoolEntity;
+import com.cuong.futurenav.dao.dto.SchoolPropertiesEntity;
 import com.cuong.futurenav.dao.dto.StudentEntity;
 import com.cuong.futurenav.model.FavSchoolData;
 import com.cuong.futurenav.model.SchoolData;
-import com.cuong.futurenav.model.SchoolDetailData;
+import com.cuong.futurenav.model.SchoolPropertiesData;
 import com.cuong.futurenav.model.StudentProfileData;
 
 public class BeanCopy {
@@ -64,13 +62,13 @@ public class BeanCopy {
 	public static void copyProperties(SchoolEntity source, SchoolData target){
 		
 		org.springframework.beans.BeanUtils.copyProperties(source, target);
-		ArrayList<SchoolDetailData> details = new ArrayList<SchoolDetailData>();
-		for (SchoolDetailEntity entity : source.getListOfSchoolDetail()){
-			SchoolDetailData data = new SchoolDetailData();
+		ArrayList<SchoolPropertiesData> details = new ArrayList<SchoolPropertiesData>();
+		for (SchoolPropertiesEntity entity : source.getListOfSchoolProperties()){
+			SchoolPropertiesData data = new SchoolPropertiesData();
 			org.springframework.beans.BeanUtils.copyProperties(entity, data);
 			details.add(data);
 		}
-		target.setListOfSchoolDetail(details);
+		target.setListOfSchoolProperties(details);
 		
 	}
 	

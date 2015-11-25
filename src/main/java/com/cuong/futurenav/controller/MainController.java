@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.MediaType;
 import com.cuong.futurenav.business.SchoolManager;
 import com.cuong.futurenav.business.StudentManager;
-import com.cuong.futurenav.controller.model.FavSchoolResponse;
+import com.cuong.futurenav.business.wiki.WikiManager;
 import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileRequest;
 import com.cuong.futurenav.controller.model.StudentProfileResponse;
-import com.cuong.futurenav.dao.dto.FavSchoolEntity;
-import com.cuong.futurenav.model.FavSchoolData;
 import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.model.StudentProfileData;
 import com.cuong.futurenav.util.BeanCopy;
@@ -33,6 +31,9 @@ public class MainController {
 	
 	@Autowired
 	private StudentManager studentMgr;
+	
+	@Autowired
+	private WikiManager wikiManager;
 		
 	@RequestMapping(value = "/findSchoolByLocation", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -46,7 +47,7 @@ public class MainController {
 		for (SchoolData d :  data){
 			SchoolResponse s = new SchoolResponse();
 			BeanUtils.copyProperties(d,  s);
-			s.setListOfSchoolDetail(null);
+			s.setListOfSchoolProperties(null);
 			response.add(s);
 			
 		}
@@ -134,5 +135,18 @@ public class MainController {
 		return r;
 	}
 	
-	
+	@RequestMapping(value = "/refreshWikiData", method = RequestMethod.POST)
+	@ResponseBody
+	public void refreshWikiData(){
+		
+		wikiManager.getSchoolListFromWiki();
+		
+	}
+	@RequestMapping(value = "/updateLatLong", method = RequestMethod.POST)
+	@ResponseBody
+	public void updateLatLong(){
+		
+		wikiManager.updateLatLong();
+		
+	}	
 }

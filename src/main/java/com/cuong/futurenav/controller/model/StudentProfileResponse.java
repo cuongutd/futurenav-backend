@@ -10,6 +10,7 @@ public class StudentProfileResponse {
 	private String nameFirst;
 	private String nameLast;
 	private String nameMiddle;
+	private String nameDisplay;
 	private String email;
 	private String city;
 	private String country;
@@ -195,6 +196,14 @@ public class StudentProfileResponse {
 
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	public String getNameDisplay() {
+		return nameDisplay;
+	}
+
+	public void setNameDisplay(String nameDisplay) {
+		this.nameDisplay = nameDisplay;
 	}
 
 }
