@@ -62,7 +62,7 @@ public class MainController {
 		
 		SchoolData d = schoolManager.getSchoolDetail(schoolId);
 		SchoolResponse r = new SchoolResponse();
-		BeanUtils.copyProperties(d, r);
+		BeanCopy.copyProperties(d, r);
 		return r;
 		
 	}

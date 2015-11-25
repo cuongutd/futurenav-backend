@@ -3,6 +3,7 @@ package com.cuong.futurenav.util;
 import java.util.ArrayList;
 
 import com.cuong.futurenav.controller.model.FavSchoolResponse;
+import com.cuong.futurenav.controller.model.SchoolPropResponse;
 import com.cuong.futurenav.controller.model.SchoolResponse;
 import com.cuong.futurenav.controller.model.StudentProfileResponse;
 import com.cuong.futurenav.dao.dto.FavSchoolEntity;
@@ -72,5 +73,17 @@ public class BeanCopy {
 		
 	}
 	
+	public static void copyProperties(SchoolData source, SchoolResponse target){
+		
+		org.springframework.beans.BeanUtils.copyProperties(source, target);
+		ArrayList<SchoolPropResponse> details = new ArrayList<SchoolPropResponse>();
+		for (SchoolPropertiesData data : source.getListOfSchoolProperties()){
+			SchoolPropResponse response = new SchoolPropResponse();
+			org.springframework.beans.BeanUtils.copyProperties(data, response);
+			details.add(response);
+		}
+		target.setListOfSchoolProperties(details);
+		
+	}
 	
 }
