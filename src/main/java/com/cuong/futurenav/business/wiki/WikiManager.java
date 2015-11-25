@@ -67,17 +67,38 @@ public class WikiManager {
     public void updateLatLong(){
     	//get a schools not having lat, long populated
     	List<SchoolEntity> schools = schoolRepo.findByLatitudeIsNullOrLongitudeIsNull();
-    	
+    	List<SchoolEntity> updateList = new ArrayList<SchoolEntity>();
+    	LOG.debug("number of records: " + schools.size());
+    	int i = 0;
     	for (SchoolEntity entity : schools){
-
-    		//try google map service with school name and state to get lat/long
-        	GMData data = RestClient.getGoogleApiService().getGeo(entity.getName() + ", " + entity.getState()); 
-        	
-        	entity.setLatitude(Double.valueOf(data.getResults().get(0).getGeometry().getLocation().getLat()));
-        	entity.setLongitude(Double.valueOf(data.getResults().get(0).getGeometry().getLocation().getLng()));
+    		entity.setListOfSchoolProperties(null);
+    		try{
+    			String query = entity.getName();
+    			if (entity.getCity() != null && entity.getCity().length() > 0)
+    				query += ", " + entity.getCity();
+    			if (entity.getState() != null && entity.getState().length() > 0)
+    				query += ", " + entity.getState();
+    			
+	    		//try google map service with school name and state to get lat/long
+	        	GMData data = RestClient.getGoogleApiService().getGeo(query); 
+	        	if ("OVER_QUERY_LIMIT".equals(data.getStatus()))
+	        		break;
+	        	
+	        	i++;
+	        	
+	        	entity.setLatitude(Double.valueOf(data.getResults().get(0).getGeometry().getLocation().getLat()));
+	        	entity.setLongitude(Double.valueOf(data.getResults().get(0).getGeometry().getLocation().getLng()));
+	        	
+	        	updateList.add(entity);
+	        	
+    		}catch(Exception e){
+    			LOG.debug("Error: " + entity.getName() + ", " + entity.getState());
+    			e.printStackTrace();
+    		}
     	}
+    	LOG.debug("number of records being updated: " + i);
     	
-    	schoolRepo.save(schools);
+    	schoolRepo.save(updateList);
     }
     
     
