@@ -1,7 +1,6 @@
 package com.cuong.futurenav.model;
 
 import java.util.Date;
-import com.cuong.futurenav.model.SchoolData;
 
 public class SchoolPropertiesData {
 	private Integer id;
@@ -9,7 +8,6 @@ public class SchoolPropertiesData {
 	private String value;
 	private Date auCreatedDt;
 	private Date auUpdatedDt;
-	private SchoolData school;
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -50,14 +48,6 @@ public class SchoolPropertiesData {
 
 	public Date getAuUpdatedDt() {
 		return this.auUpdatedDt;
-	}
-
-	public void setSchool(SchoolData school) {
-		this.school = school;
-	}
-
-	public SchoolData getSchool() {
-		return this.school;
 	}
 
 	public String toString() {

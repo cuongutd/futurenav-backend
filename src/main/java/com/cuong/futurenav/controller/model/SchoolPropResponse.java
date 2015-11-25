@@ -2,7 +2,6 @@ package com.cuong.futurenav.controller.model;
 
 import java.util.Date;
 
-import com.cuong.futurenav.model.SchoolData;
 import com.cuong.futurenav.util.DateUtil;
 
 public class SchoolPropResponse {
@@ -11,7 +10,6 @@ public class SchoolPropResponse {
 	private String value;
 	private String auCreatedDt;
 	private String auUpdatedDt;
-	private SchoolData school;
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -53,11 +51,4 @@ public class SchoolPropResponse {
 		return this.auUpdatedDt;
 	}
 
-	public void setSchool(SchoolData school) {
-		this.school = school;
-	}
-
-	public SchoolData getSchool() {
-		return this.school;
-	}
 }
