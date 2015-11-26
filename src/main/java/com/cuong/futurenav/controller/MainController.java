@@ -149,4 +149,13 @@ public class MainController {
 		wikiManager.updateLatLong();
 		
 	}	
+
+	@RequestMapping(value = "/updateCrestUrl", method = RequestMethod.POST)
+	@ResponseBody
+	public void updateCrestUrl(){
+		
+		wikiManager.updateCrestUrl();
+		
+	}	
+
 }

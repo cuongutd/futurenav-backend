@@ -26,7 +26,7 @@ public class BeanCopy {
 			FavSchoolResponse res = new FavSchoolResponse();
 			org.springframework.beans.BeanUtils.copyProperties(data, res);
 			SchoolResponse schoolRes = new SchoolResponse();
-			org.springframework.beans.BeanUtils.copyProperties(data.getSchool(), schoolRes);
+			copyProperties(data.getSchool(), schoolRes);
 			res.setSchool(schoolRes);
 			favSchoolResponse.add(res);
 
@@ -45,7 +45,7 @@ public class BeanCopy {
 
 			// copy schoolEntity to data
 			SchoolData data = new SchoolData();
-			org.springframework.beans.BeanUtils.copyProperties(entity.getSchool(), data);
+			copyProperties(entity.getSchool(), data);
 
 			// copy favSchoolEntity to data
 			FavSchoolData favData = new FavSchoolData();
